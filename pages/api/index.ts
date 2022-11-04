@@ -4,7 +4,7 @@ type OperationType = 'addition' | 'subtraction' | 'multiplication'
 
 type SuccessResponse = {
     slackUsername: string
-    "operation type": OperationType
+    operation_type: OperationType
     result: number
 }
 
@@ -12,7 +12,7 @@ type FailureResponse = {
     slackUsername: string
     result: number
     error: string
-    'operation type': string
+    operation_type: string
 }
 
 type RequestBody = {
@@ -27,15 +27,14 @@ export default function task2(
 ) {
     const slackUsername = 'Niscolinx'
 
-     if (typeof req.body.operation_type !== 'string') {
-         return res.status(400).json({
-             error: `operation_type must be a string`,
-             slackUsername,
-             result: NaN,
-                'operation type': 'Invalid Operation'
-         })
-     }
-
+    if (typeof req.body.operation_type !== 'string') {
+        return res.status(400).json({
+            error: `operation_type must be a string`,
+            slackUsername,
+            result: NaN,
+            operation_type: 'Invalid Operation',
+        })
+    }
 
     const requestBody: RequestBody = {
         ...req.body,
@@ -50,7 +49,6 @@ export default function task2(
         y: number
     ) => {
         let result: number
-
 
         switch (operation_type.toLowerCase()) {
             case 'addition':
@@ -67,50 +65,43 @@ export default function task2(
         }
     }
 
-
     if (!operation_type) {
         return res.status(400).json({
             error: `operation_type cannot be empty`,
             slackUsername,
             result: NaN,
-            'operation type': 'Invalid Operation',
+            operation_type: 'Invalid Operation',
         })
     }
-
-   
 
     if (
         operation_type.toLowerCase() !== 'addition' &&
         operation_type.toLowerCase() !== 'subtraction' &&
-        operation_type.toLowerCase() !== 'multiplication' 
+        operation_type.toLowerCase() !== 'multiplication'
     ) {
         return res.status(400).json({
             error: `<${operation_type}> is not a valid operation type`,
             slackUsername,
             result: NaN,
-            'operation type': 'Invalid Operation',
+            operation_type: 'Invalid Operation',
         })
     }
 
-    
-
-    if(!x || !y) {
+    if (!x || !y) {
         return res.status(400).json({
             error: 'Inputs x and y are required',
             slackUsername,
             result: NaN,
-            'operation type': 'Invalid Operation',
+            operation_type: 'Invalid Operation',
         })
     }
 
-
-
-    if(typeof x !== 'number' || typeof y !== 'number') {
+    if (typeof x !== 'number' || typeof y !== 'number') {
         return res.status(400).json({
             error: 'Inputs x and y must be numbers',
             slackUsername,
             result: NaN,
-            'operation type': 'Invalid Operation',
+            operation_type: 'Invalid Operation',
         })
     }
 
@@ -119,6 +110,6 @@ export default function task2(
     res.status(200).json({
         slackUsername,
         result,
-        "operation type": operation_type,
+        operation_type,
     })
 }
