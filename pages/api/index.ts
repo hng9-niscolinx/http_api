@@ -37,9 +37,8 @@ export default function task2(
     ) => {
         let result: number
 
-        console.log({operation_type})
 
-        switch (operation_type) {
+        switch (operation_type.toLowerCase()) {
             case 'addition':
                 return (result = x + y)
 
@@ -60,7 +59,6 @@ export default function task2(
         operation_type !== 'subtraction' &&
         operation_type !== 'multiplication'
     ) {
-        console.log({ operation_type })
         return res.status(400).json({
             error: `<${operation_type}> is not a valid operation type`,
             slackUsername,
