@@ -26,7 +26,12 @@ export default function task2(
 ) {
     const slackUsername = 'Niscolinx'
 
-    const requestBody: RequestBody = req.body
+
+
+    const requestBody: RequestBody = {
+        ...req.body,
+        operation_type: req.body.operation_type.toLowerCase() as OperationType,
+    }
 
     const { operation_type, x, y } = requestBody
 
