@@ -11,9 +11,6 @@ export default function handler(
     req: NextApiRequest,
     res: NextApiResponse<Response>
 ) {
-
-    console.log(req.body)
-
     res.status(200).json({
         slackUsername: 'Niscolinx',
         backend: true,
