@@ -4,7 +4,7 @@ type OperationType = 'addition' | 'subtraction' | 'multiplication'
 
 type SuccessResponse = {
     slackUsername: string
-    operation_type: OperationType
+    "operation type": OperationType
     result: number
 }
 
@@ -113,6 +113,6 @@ export default function task2(
     res.status(200).json({
         slackUsername,
         result,
-        operation_type,
+        "operation type": operation_type,
     })
 }
