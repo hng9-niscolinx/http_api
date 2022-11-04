@@ -27,6 +27,8 @@ export default function task2(
 ) {
     const slackUsername = 'Niscolinx'
 
+    console.log({req})
+
     if (typeof req.body.operation_type !== 'string') {
         return res.status(400).json({
             error: `operation_type must be a string`,
