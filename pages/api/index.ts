@@ -55,9 +55,9 @@ export default function task2(
 
 
     if (
-        operation_type !== 'addition' &&
-        operation_type !== 'subtraction' &&
-        operation_type !== 'multiplication'
+        operation_type.toLowerCase() !== 'addition' &&
+        operation_type.toLowerCase() !== 'subtraction' &&
+        operation_type.toLowerCase() !== 'multiplication'
     ) {
         return res.status(400).json({
             error: `<${operation_type}> is not a valid operation type`,
