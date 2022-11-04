@@ -107,9 +107,17 @@ export default function task2(
 
     const result = handleArithmeticOperation(operation_type, x, y)
 
-    res.status(200).json({
+    // res.status(200).json({
+    //     slackUsername,
+    //     result,
+    //     operation_type,
+    // })
+
+    return res.status(200).json({
         slackUsername,
-        result,
-        operation_type,
+        result: 0,
+        operation_type: 'addition',
     })
+
+
 }
