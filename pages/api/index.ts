@@ -12,6 +12,7 @@ type FailureResponse = {
     slackUsername: string
     result: number
     error: string
+    'operation type': string
 }
 
 type RequestBody = {
@@ -31,6 +32,7 @@ export default function task2(
              error: `operation_type must be a string`,
              slackUsername,
              result: NaN,
+                'operation type': 'Invalid Operation'
          })
      }
 
@@ -71,6 +73,7 @@ export default function task2(
             error: `operation_type cannot be empty`,
             slackUsername,
             result: NaN,
+            'operation type': 'Invalid Operation',
         })
     }
 
@@ -85,6 +88,7 @@ export default function task2(
             error: `<${operation_type}> is not a valid operation type`,
             slackUsername,
             result: NaN,
+            'operation type': 'Invalid Operation',
         })
     }
 
@@ -95,6 +99,7 @@ export default function task2(
             error: 'Inputs x and y are required',
             slackUsername,
             result: NaN,
+            'operation type': 'Invalid Operation',
         })
     }
 
@@ -105,6 +110,7 @@ export default function task2(
             error: 'Inputs x and y must be numbers',
             slackUsername,
             result: NaN,
+            'operation type': 'Invalid Operation',
         })
     }
 
