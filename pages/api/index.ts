@@ -26,6 +26,13 @@ export default function task2(
 ) {
     const slackUsername = 'Niscolinx'
 
+     if (typeof req.body.operation_type !== 'string') {
+         return res.status(400).json({
+             error: `operation_type must be a string`,
+             slackUsername,
+             result: NaN,
+         })
+     }
 
 
     const requestBody: RequestBody = {
@@ -59,10 +66,20 @@ export default function task2(
     }
 
 
+    if (!operation_type) {
+        return res.status(400).json({
+            error: `operation_type cannot be empty`,
+            slackUsername,
+            result: NaN,
+        })
+    }
+
+   
+
     if (
         operation_type.toLowerCase() !== 'addition' &&
         operation_type.toLowerCase() !== 'subtraction' &&
-        operation_type.toLowerCase() !== 'multiplication'
+        operation_type.toLowerCase() !== 'multiplication' 
     ) {
         return res.status(400).json({
             error: `<${operation_type}> is not a valid operation type`,
@@ -71,6 +88,8 @@ export default function task2(
         })
     }
 
+    
+
     if(!x || !y) {
         return res.status(400).json({
             error: 'Inputs x and y are required',
@@ -78,6 +97,8 @@ export default function task2(
             result: NaN,
         })
     }
+
+
 
     if(typeof x !== 'number' || typeof y !== 'number') {
         return res.status(400).json({
